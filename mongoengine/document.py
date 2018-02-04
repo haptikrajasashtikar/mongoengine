@@ -2,6 +2,7 @@ import re
 import warnings
 
 from bson.dbref import DBRef
+from bson import ObjectId
 import pymongo
 from pymongo.read_preferences import ReadPreference
 import six
@@ -414,7 +415,8 @@ class Document(BaseDocument):
 
         self._clear_changed_fields()
         self._created = False
-
+        if hasattr(self, 'id') and self.id and isinstance(self.id, ObjectId):
+            setattr(self, 'id', str(self.id))
         return self
 
     def _save_create(self, doc, force_insert, write_concern):
