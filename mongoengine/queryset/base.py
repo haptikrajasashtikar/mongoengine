@@ -1125,7 +1125,7 @@ class BaseQuerySet(object):
 
         return queryset
 
-    def values_list(self, *fields):
+    def values_list(self, *fields, **kwargs):
         """An alias for scalar"""
         return self.scalar(*fields)
 
