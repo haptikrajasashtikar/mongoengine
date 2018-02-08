@@ -457,6 +457,8 @@ class ObjectIdField(BaseField):
                 value = ObjectId(value)
         except Exception:
             pass
+        if value:
+            value = str(value)
         return value
 
     def to_mongo(self, value):
