@@ -338,7 +338,7 @@ class BaseDocument(object):
                 value = field.generate()
                 self._data[field_name] = value
 
-            if value is not None:
+            if value is not None or field.null:
                 if use_db_field:
                     data[field.db_field] = value
                 else:
