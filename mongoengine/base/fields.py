@@ -467,7 +467,8 @@ class ObjectIdField(BaseField):
                 return ObjectId(six.text_type(value))
             except Exception as e:
                 # e.message attribute has been deprecated since Python 2.6
-                self.error(six.text_type(e))
+                if not (self.null and value is None):
+                    self.error(six.text_type(e))
         return value
 
     def prepare_query_value(self, op, value):
