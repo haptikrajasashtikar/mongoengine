@@ -651,9 +651,9 @@ class BaseDocument(object):
 
             if default != value:
                 continue
-            if type(value) not in [dict, list]:
-                del set_data[path]
-                unset_data[path] = 1
+            # if type(value) not in [dict, list, str, unicode]:
+            #     del set_data[path]
+            #     unset_data[path] = 1
         return set_data, unset_data
 
     @classmethod
