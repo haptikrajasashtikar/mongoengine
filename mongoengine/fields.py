@@ -166,15 +166,16 @@ class EmailField(StringField):
         re.IGNORECASE
     )
 
-    UTF8_USER_REGEX = re.compile(
-        six.u(
-            # RFC 6531 Section 3.3 extends `atext` (used by dot-atom) to
-            # include `UTF8-non-ascii`.
-            r"(^[-!#$%&'*+/=?^_`{}|~0-9A-Z\u0080-\U0010FFFF]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z\u0080-\U0010FFFF]+)*\Z"
-            # `quoted-string`
-            r'|^"([\001-\010\013\014\016-\037!#-\[\]-\177]|\\[\001-\011\013\014\016-\177])*"\Z)'
-        ), re.IGNORECASE | re.UNICODE
-    )
+    # UTF8_USER_REGEX = re.compile(
+    #     six.u(
+    #         # RFC 6531 Section 3.3 extends `atext` (used by dot-atom) to
+    #         # include `UTF8-non-ascii`.
+    #         r"(^[-!#$%&'*+/=?^_`{}|~0-9A-Z\u0080-\U0010FFFF]+(\.[-!#$%&'*+/=?^_`{}|~0-9A-Z\u0080-\U0010FFFF]+)*\Z"
+    #         # `quoted-string`
+    #         r'|^"([\001-\010\013\014\016-\037!#-\[\]-\177]|\\[\001-\011\013\014\016-\177])*"\Z)'
+    #     ), re.IGNORECASE | re.UNICODE
+    # )
+    UTF8_USER_REGEX = USER_REGEX
 
     DOMAIN_REGEX = re.compile(
         r'((?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+)(?:[A-Z0-9-]{2,63}(?<!-))\Z',
