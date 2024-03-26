@@ -58,7 +58,6 @@ extra_opts = {
     'tests_require': ['nose', 'coverage==4.2', 'blinker', 'Pillow>=2.0.0']
 }
 if sys.version_info[0] == 3:
-    extra_opts['use_2to3'] = True
     if 'test' in sys.argv or 'nosetests' in sys.argv:
         extra_opts['packages'] = find_packages()
         extra_opts['package_data'] = {
